@@ -569,7 +569,7 @@
             transform-origin: center;
             background-color: rgba(49, 0, 113, 0.5);
             z-index: 10000;
-            display: none; 
+            display: none;
             flex-direction: column;
             align-items: center;
             transition: opacity 0.5s ease;
@@ -715,6 +715,7 @@
         <div class="nav-content">
             <div class="logo">KOALAWARE</div>
             <ul class="nav-links">
+                <ul class="nav-links">
                 <li><a href="#home">HOME</a></li>
                 <li><a href="#projects">PROJECTS</a></li>
                 <li><a href="#collaborations">COLLABORATIONS</a></li>
@@ -878,6 +879,32 @@
                 </div>
             </div>
         </div>
+    </section>
+
+<style>
+        .play-now {
+            display: block;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+            color: #fff;
+            padding: 1rem 5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .play-now:hover {
+            transform: scale(1.1) rotateZ(5deg);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.5), rgba(255, 0, 255, 0.5));
+        }
+    </style>
 
     <footer class="footer" id="contact">
         <div class="container">
@@ -962,7 +989,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}"";
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
         const matrixArray = matrix.split("");
         
         const fontSize = 10;
@@ -1000,20 +1027,9 @@
 </body>
 </html>
 
-<style>
-    .nav-links a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border: 1px solid transparent;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.8);
-    }
+</style>
 
+<style>
     .nav-links a:hover {
         border-color: #00ffff;
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(255, 0, 255, 0.5);
@@ -1109,6 +1125,7 @@ document.addEventListener('contextmenu', event => event.preventDefault());
     .card:hover {
         transform: rotateY(5deg) rotateX(5deg) translateZ(50px);
         text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.8);
+    }
 
     .section {
         padding: 8rem 0;
@@ -1123,8 +1140,8 @@ document.addEventListener('contextmenu', event => event.preventDefault());
         margin-bottom: 4rem;
         background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         text-shadow: 0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(255, 0, 255, 0.8);
         position: relative;
     }
-</style>
