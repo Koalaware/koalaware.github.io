@@ -3,82 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Koala's portfolio showcasing projects in full-stack development, AI, game development, and ethical hacking.">
-    <meta name="keywords" content="full-stack developer, AI, game development, ethical hacking, portfolio, quantum encryption">
-    <meta name="author" content="koala.sh">
-    <meta property="og:title" content="Koala's Cosmic Portfolio">
-    <meta property="og:description" content="Koala's portfolio">
-    <meta property="og:url" content="https://koalaware.vercel.app">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>𝙆𝙤𝙖𝙡𝙖³</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap">
+    <title>⟡𝙆𝙤𝙖𝙡𝙖³</title>
     <style>
-        :root {
-            --black: #000000;
-            --white: #FFFFFF;
-            --gray-dark: #333333;
-            --gray-light: #CCCCCC;
-            --glow: 0 0 5px rgba(255, 255, 255, 0.3);
-            --shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-            --shadow-hover: 0 12px 24px rgba(255, 255, 255, 0.1);
-            --border-radius: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        html {
-            scroll-behavior: smooth;
-        }
         body {
-            background: var(--black);
-            color: var(--white);
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+}
+
+        body {
+            background: #000;
+            color: #fff;
             font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
             cursor: none;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
+
         .cursor {
             position: fixed;
-            width: 16px;
-            height: 16px;
-            background: radial-gradient(circle, var(--white), transparent);
-            border: 2px solid var(--gray-light);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #00ffff, #ff00ff);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            will-change: transform;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
         }
+
         .cursor-trail {
             position: fixed;
-            width: 6px;
-            height: 6px;
-            background: var(--white);
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            opacity: 0.6;
-            animation: comet-trail 0.5s ease-out forwards;
-            will-change: transform, opacity;
+            opacity: 0.7;
         }
-        @keyframes comet-trail {
-            0% { opacity: 0.6; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0; transform: scale(0.5) rotate(45deg); }
-        }
-        .shooting-star-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
+
         .particles {
             position: fixed;
             top: 0;
@@ -87,34 +59,41 @@
             height: 100%;
             z-index: -1;
         }
+
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--white);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
             border-radius: 50%;
-            animation: shoot 5s linear infinite;
-            box-shadow: var(--glow);
+            animation: float 6s ease-in-out infinite;
         }
-        @keyframes shoot {
-            0% { transform: translateX(-100vw); opacity: 1; }
-            100% { transform: translateX(100vw); opacity: 0; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
+
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.1;
+        }
+
         .nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             z-index: 1000;
             padding: 1rem 0;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
-        .nav.scrolled {
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: var(--shadow);
-        }
+
         .nav-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -123,65 +102,81 @@
             align-items: center;
             padding: 0 2rem;
         }
+
         .logo {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 1.8rem;
             font-weight: 900;
-            color: var(--white);
-            text-shadow: var(--glow);
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
         }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
+
         .nav-links a {
-            color: var(--white);
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
             padding: 0.5rem 1rem;
             border: 1px solid transparent;
             border-radius: 20px;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .nav-links a:hover {
-            border-color: var(--white);
-            box-shadow: var(--glow);
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(255, 0, 255, 0.5);
             transform: translateY(-2px);
         }
+
         .header {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
         }
+
         .header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: cosmic-scan 8s linear infinite;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            animation: scanline 3s linear infinite;
         }
-        @keyframes cosmic-scan {
-            0% { transform: translateY(-100%); }
-            50% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
+
         .hero-content {
             text-align: center;
             z-index: 2;
             max-width: 1000px;
             padding: 0 2rem;
         }
+
         .animated-text {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: clamp(1.5rem, 6vw, 4rem);
             font-weight: 900;
             text-transform: uppercase;
@@ -191,29 +186,53 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            text-shadow: var(--glow);
-            animation: cosmic-pulse 3s ease infinite;
+            text-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
         }
-        @keyframes cosmic-pulse {
-            0%, 100% { text-shadow: var(--glow); }
-            50% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); }
+
+        .text-line {
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite, glitch 0.3s ease infinite alternate;
         }
+
+        .word {
+            display: inline-block;
+            margin: 0 0.2em;
+            animation: wordGlow 2s ease infinite alternate;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0 0 50px rgba(0, 255, 255, 0.8); }
+            25% { text-shadow: -2px 0 rgba(255, 0, 255, 0.8), 2px 0 rgba(0, 255, 255, 0.8); }
+            50% { text-shadow: 0 0 50px rgba(255, 255, 0, 0.8); }
+            75% { text-shadow: 2px 0 rgba(255, 0, 255, 0.8), -2px 0 rgba(0, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 50px rgba(0, 255, 255, 0.8); }
+        }
+
+        @keyframes wordGlow {
+            0% { transform: scale(1) rotateY(0deg); filter: hue-rotate(0deg); }
+            100% { transform: scale(1.1) rotateY(360deg); filter: hue-rotate(360deg); }
+        }
+
         .status-card {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(25px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            border-radius: 30px;
             padding: 3rem;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            animation: cosmic-card 2s ease infinite;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-        @keyframes cosmic-card {
-            0%, 100% { border-color: rgba(255, 255, 255, 0.1); }
-            50% { border-color: rgba(204, 204, 204, 0.1); }
-        }
+
         .status-card::before {
             content: '';
             position: absolute;
@@ -221,15 +240,29 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--gray-dark), var(--gray-light));
-            border-radius: var(--border-radius);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            border-radius: 30px;
             z-index: -1;
-            opacity: 0.2;
-            transition: var(--transition);
+            animation: rotate 3s linear infinite;
         }
-        .status-card:hover::before {
-            opacity: 0.4;
+
+        .status-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 28px;
+            z-index: -1;
         }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .status-indicator {
             display: flex;
             align-items: center;
@@ -237,49 +270,58 @@
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
         .status-dot {
             width: 20px;
             height: 20px;
-            background: radial-gradient(circle, var(--white), var(--gray-light));
+            background: radial-gradient(circle, #00ff88, #00ffff);
             border-radius: 50%;
-            animation: cosmic-dot 2s ease infinite;
-            box-shadow: var(--glow);
+            animation: pulse3d 2s infinite;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
         }
-        @keyframes cosmic-dot {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.4); }
+
+        @keyframes pulse3d {
+            0% { transform: scale(1) rotateZ(0deg); box-shadow: 0 0 30px rgba(0, 255, 136, 0.8); }
+            50% { transform: scale(1.3) rotateZ(180deg); box-shadow: 0 0 50px rgba(0, 255, 136, 1); }
+            100% { transform: scale(1) rotateZ(360deg); box-shadow: 0 0 30px rgba(0, 255, 136, 0.8); }
         }
+
         .status-text {
             font-size: 1.2rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: var(--glow);
         }
+
         .hero-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 3rem;
             font-weight: 900;
-            color: var(--white);
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
-            text-shadow: var(--glow);
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
         }
+
         .hero-subtitle {
             font-size: 1.3rem;
-            color: var(--gray-light);
+            color: #ffffff;
             margin-bottom: 2rem;
             font-weight: 300;
         }
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
         }
+
         .social-btn {
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            color: var(--white);
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 2px solid transparent;
+            color: #fff;
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
@@ -288,47 +330,58 @@
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
+
         .social-btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            border-radius: 50px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+
         .social-btn:hover::before {
-            left: 100%;
+            opacity: 1;
+            animation: rotate 1s linear infinite;
         }
+
         .social-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
         }
+
         .section {
             padding: 8rem 0;
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(51, 51, 51, 0.05));
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
+
         .section-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 4rem;
             font-weight: 900;
             text-align: center;
             margin-bottom: 4rem;
-            color: var(--white);
-            text-shadow: var(--glow);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(255, 0, 255, 0.8);
             position: relative;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -337,39 +390,31 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(45deg, var(--white), var(--gray-light));
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
             border-radius: 2px;
-            animation: cosmic-line 2s ease infinite;
+            animation: pulse 2s infinite;
         }
-        @keyframes cosmic-line {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.2); }
-        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
             perspective: 1000px;
         }
+
         .card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
             padding: 3rem;
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
+            transition: all 0.5s ease;
             transform-style: preserve-3d;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(50px);
-            will-change: transform, opacity;
         }
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
         .card::before {
             content: '';
             position: absolute;
@@ -380,176 +425,275 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
+
         .card:hover::before {
             left: 100%;
         }
+
         .card:hover {
-            transform: rotateY(10deg) rotateX(10deg) translateZ(50px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: rotateY(5deg) rotateX(5deg) translateZ(50px);
+            box-shadow: 0 30px 60px rgba(0, 255, 255, 0.3);
+            border-color: rgba(0, 255, 255, 0.5);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.8);
         }
+
         .card h3 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--white);
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
-            text-shadow: var(--glow);
         }
+
         .card p {
-            color: var(--gray-light);
+            color: #ccc;
             line-height: 1.8;
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
+
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
         }
+
         .tech-tag {
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--white);
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+            color: #fff;
             padding: 0.5rem 1rem;
             border-radius: 25px;
             font-size: 0.9rem;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
         }
+
         .tech-tag:hover {
-            transform: scale(1.1);
-            box-shadow: var(--glow);
+            transform: scale(1.1) rotateZ(5deg);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.8);
         }
+
+
         .footer {
             padding: 6rem 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(51, 51, 51, 0.05));
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
         }
+
         .footer h3 {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 2.5rem;
             font-weight: 900;
-            color: var(--white);
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
-            text-shadow: var(--glow);
         }
-        .footer p {
-            color: var(--gray-light);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+
+        .status-card h1, 
+        .status-card p, 
+        .status-card .status-text {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.8);
         }
-        .footer-bottom p {
-            font-size: 0.9rem;
-            color: var(--gray-light);
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .animated-text { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .social-links { flex-direction: column; align-items: center; }
+            .card { padding: 2rem; }
+            .section-title { font-size: 2.5rem; }
         }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: 6px;
+        }
+
+
         .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--black);
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10000;
             transition: opacity 1s ease;
         }
+
         .loader-text {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', monospace;
             font-size: 3rem;
             font-weight: 900;
-            color: var(--white);
-            text-shadow: var(--glow);
-            animation: galaxy-spin 2s ease infinite;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 1s infinite;
         }
-        @keyframes galaxy-spin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            100% { transform: rotate(360deg) scale(1); }
+
+        .music-player {
+            position: fixed;
+            bottom: 7%;
+            right: -2%;
+            width: max-content;
+            border-radius: 100px;
+            box-shadow: 0px 0px 10px 15px rgba(72, 40, 105, 0.45);
+            transform: rotate(-90deg);
+            transform-origin: center;
+            background-color: rgba(49, 0, 113, 0.5);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 0.5s ease;
+            opacity: 0;
         }
-        ::-webkit-scrollbar {
-            width: 12px;
+
+        #custom-volume-slider {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+            transition: opacity 0.5s ease;
+            opacity: 0;
         }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.5);
+
+        #custom-volume-slider::-webkit-slider-runnable-track {
+            height: 10px;
+            background: linear-gradient(to right, rgba(72, 40, 105, 0.8), rgba(147, 112, 219, 0.5));
+            border-radius: 5px;
         }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, var(--white), var(--gray-light));
-            border-radius: 6px;
+
+        #custom-volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4b0082;
+            border: 2px solid hsl(260, 60%, 55%);
+            border-radius: 50%;
+            margin-top: -5px;
+            cursor: pointer;
         }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .animated-text {
-                font-size: 2rem;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .hero-title {
-                font-size: 2rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card {
-                padding: 2rem;
-            }
+
+        #custom-volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.5);
+            box-shadow: 0 0 12px rgba(72, 40, 105, 0.45);
         }
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .animated-text {
-                font-size: 1.5rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
+
+        .play-now {
+            display: block;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+            color: #fff;
+            padding: 1rem 5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .play-now:hover {
+            transform: scale(1.1) rotateZ(5deg);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.5), rgba(255, 0, 255, 0.5));
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+    <audio id="backgroundAudio" loop>
+        <source src="resources/audio/son.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script src="smooth-scroll.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
     <div class="loader" id="loader">
         <div class="loader-text">INITIALIZING...</div>
     </div>
+
     <div class="cursor" id="cursor"></div>
+
     <div class="particles" id="particles"></div>
-    <canvas class="shooting-star-bg" id="shooting-star-bg"></canvas>
+
+
+    <canvas class="matrix" id="matrix"></canvas>
+
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">KOALAWARE</div>
             <ul class="nav-links">
-                <li><a href="#home" aria-label="Home">HOME</a></li>
-                <li><a href="#projects" aria-label="Projects">PROJECTS</a></li>
-                <li><a href="#collaborations" aria-label="Collaborations">COLLABORATIONS</a></li>
-                <li><a href="#contact" aria-label="Contact">CONTACT</a></li>
+                <ul class="nav-links">
+                <li><a href="#home">    </a></li>
+                <li><a href="#home">    </a></li>
+                <li><a href="#home">    </a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#collaborations">COLLABORATIONS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
     </nav>
+
     <header class="header" id="home">
         <div class="hero-content">
-            <div class="animated-text">
-                <div class="text-line">KOALAWARE</div>
+            <div class="animated-text" id="animatedText">
+                <div class="text-line">koalaware</div>
             </div>
+            
             <div class="status-card">
                 <div class="status-indicator">
                     <div class="status-dot"></div>
@@ -557,279 +701,363 @@
                 </div>
                 <h1 class="hero-title">FULL STACK DEVELOPER</h1>
                 <p class="hero-subtitle">𝐌𝐚𝐤𝐞 𝐭𝐡𝐞 𝐦𝐨𝐬𝐭 𝐨𝐮𝐭 𝐨𝐟 𝐲𝐨𝐮𝐫𝐬𝐞𝐥𝐟...</p>
+                
                 <div class="social-links">
-                    <a href="https://discord.gg/PnwWcywFyb" target="_blank" class="social-btn" aria-label="Discord">DISCORD</a>
-                    <a href="mailto:meowtechxd.lol@gmail.com" target="_blank" class="social-btn" aria-label="Email">EMAIL</a>
+                    <a href="https://discord.gg/PnwWcywFyb" target="_blank" class="social-btn">DISCORD</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=meowtechxd.lol@gmail.com" target="_blank" class="social-btn">Email</a>
                 </div>
             </div>
         </div>
     </header>
+
     <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title">PROJECTS</h2>
             <div class="grid">
-                <div class="card" onclick="window.open('https://reverse-engineering-toolkit.vercel.app', '_blank')" aria-label="Reverse Engineering Toolkit">
+                <div class="card" onclick="window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">
                     <h3>Reverse Engineering Toolkit</h3>
                     <p>Cross-platform analysis suite using IDA Pro, Ghidra, and Frida for reverse engineering ELF/PE binaries, focused on deobfuscating and unpacking malware samples.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">IDA Pro</span>
-                        <span class="tech-tag">Ghidra</span>
-                        <span class="tech-tag">Frida</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">x64dbg</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">IDA PRO</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">GHIDRA</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">FRIDA</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">PYTHON</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://reverse-engineering-toolkit.vercel.app/', '_blank')">X64DBG</span>
                     </div>
                 </div>
-                <div class="card" onclick="window.open('https://custom-nebula-os.vercel.app', '_blank')" aria-label="Custom Nebula OS">
-                    <h3>Custom Nebula OS</h3>
-                    <p>Lightweight Linux distribution tailored for ethical hacking and reverse engineering with hardened kernel configs and live USB persistence.</p>
+                
+                <div class="card" onclick="window.open('https://custom-nebula-os.vercel.app/', '_blank')">
+                    <h3>Custom Linux OS  NebulaOS</h3>
+                    <p>Developed a lightweight Linux distribution tailored for ethical hacking and reverse engineering with hardened kernel configs and live USB persistence.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Linux</span>
-                        <span class="tech-tag">Bash</span>
-                        <span class="tech-tag">Systemd</span>
-                        <span class="tech-tag">LUKS</span>
-                        <span class="tech-tag">GRUB</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://custom-nebula-os.vercel.app/', '_blank')">LINUX</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://custom-nebula-os.vercel.app/', '_blank')">BASH</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://custom-nebula-os.vercel.app/', '_blank')">SYSTEMD</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://custom-nebula-os.vercel.app/', '_blank')">LUKS</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://custom-nebula-os.vercel.app/', '_blank')">GRUB</span>
                     </div>
                 </div>
-                <div class="card" onclick="window.open('https://ai-shooter-game.vercel.app', '_blank')" aria-label="AI Shooter Game">
+                
+                <div class="card" onclick="window.open('https://ai-shooter-game.vercel.app/', '_blank')">
                     <h3>AI Shooter Game</h3>
                     <p>Multiplayer FPS prototype built in Unity using ML Agents for adaptive AI and Mirror Networking for real-time multiplayer.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Unity</span>
-                        <span class="tech-tag">ML-Agents</span>
-                        <span class="tech-tag">Mirror</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Rust</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ai-shooter-game.vercel.app/', '_blank')">UNITY</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ai-shooter-game.vercel.app/', '_blank')">ML-AGENTS</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ai-shooter-game.vercel.app/', '_blank')">MIRROR</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ai-shooter-game.vercel.app/', '_blank')">PYTHON</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ai-shooter-game.vercel.app/', '_blank')">RUST</span>
                     </div>
                 </div>
-                <div class="card" onclick="window.open('https://quantumanalytics.vercel.app', '_blank')" aria-label="Quantum Analytics">
-                    <h3>Quantum Analytics</h3>
+
+                <div class="card" onclick="window.open('https://quantumanalytics.vercel.app/', '_blank')">
+                    <h3>QUANTUM ANALYTICS</h3>
                     <p>AI-powered predictive analytics platform with quantum computing integration, real-time data visualization, and neural network predictions with 99.9% accuracy.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Kubernetes</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://quantumanalytics.vercel.app/', '_blank')">ANGULAR</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://quantumanalytics.vercel.app/', '_blank')">D3.JS</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://quantumanalytics.vercel.app/', '_blank')">KUBERNETES</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://quantumanalytics.vercel.app/', '_blank')">TENSORFLOW</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://quantumanalytics.vercel.app/', '_blank')">REDIS</span>
                     </div>
                 </div>
-                <div class="card" onclick="window.open('https://neural-chat-matrix.vercel.app', '_blank')" aria-label="Neural Chat Matrix">
-                    <h3>Neural Chat Matrix</h3>
-                    <p>Revolutionary AI-powered communication platform with quantum encryption, holographic avatars, and mind-machine interfaces.</p>
+
+                <div class="card" onclick="window.open('https://neural-chat-matrix.vercel.app/', '_blank')">
+                    <h3>NEURAL CHAT MATRIX</h3>
+                    <p>Revolutionary AI-powered communication platform with quantum encryption, holographic avatars, and mind-machine interfaces. Real time language translation across 200+ languages.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Angular</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Kubernetes</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://neural-chat-matrix.vercel.app/', '_blank')">ANGULAR</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://neural-chat-matrix.vercel.app/', '_blank')">D3.JS</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://neural-chat-matrix.vercel.app/', '_blank')">KUBERNETES</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://neural-chat-matrix.vercel.app/', '_blank')">TENSORFLOW</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://neural-chat-matrix.vercel.app/', '_blank')">REDIS</span>
                     </div>
                 </div>
-                <div class="card" onclick="window.open('https://ue5demo.vercel.app', '_blank')" aria-label="UE5 Cinematic Game Demo">
+                
+                <div class="card" onclick="window.open('https://ue5demo.vercel.app/', '_blank')">
                     <h3>UE5 Cinematic Game Demo</h3>
-                    <p>Short cinematic experience using Unreal Engine 5 with Nanite, Lumen, Blueprint scripting, and post-processing effects.</p>
+                    <p>Created a short cinematic experience using Unreal Engine 5 with Nanite and Lumen. Included full Blueprint scripting and post-processing effects.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Unreal Engine</span>
-                        <span class="tech-tag">Nanite</span>
-                        <span class="tech-tag">Lumen</span>
-                        <span class="tech-tag">Blueprint</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ue5demo.vercel.app/', '_blank')">Angular</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ue5demo.vercel.app/', '_blank')">D3.js</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ue5demo.vercel.app/', '_blank')">Kubernetes</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ue5demo.vercel.app/', '_blank')">TensorFlow</span>
+                        <span class="tech-tag" onclick="event.stopPropagation(); window.open('https://ue5demo.vercel.app/', '_blank')">Redis</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="section" id="collaborations">
         <div class="container">
             <h2 class="section-title">COLLABORATIONS</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>CyberSec Labs - IDA Research</h3>
+                    <h3>CyberSec Labs  IDA Research</h3>
                     <p>Collaborated on malware analysis pipeline using IDA Python and BinDiff to automate CFG recovery and static signature matching for embedded firmware.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">IDA Python</span>
+                        <span class="tech-tag">IDA PYTHON</span>
                         <span class="tech-tag">BinDiff</span>
-                        <span class="tech-tag">Ghidra</span>
-                        <span class="tech-tag">Firmware</span>
-                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">GHIDRA</span>
+                        <span class="tech-tag">FIRMWARE</span>
+                        <span class="tech-tag">PYTHON</span>
                     </div>
                 </div>
+                
                 <div class="card">
-                    <h3>HackTheBox - Kernel Exploitation</h3>
-                    <p>Internship focused on Linux kernel vulnerability discovery using QEMU, Syscaller, and GDB for exploit development in sandboxed VM environments.</p>
+                    <h3>HackTheBox  Kernel Exploitation</h3>
+                    <p>Internship focused on Linux kernel vulnerability discovery using QEMU, Syscaller, and GDB for exploit development in sandboxed VM environments</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Linux Kernel</span>
+                        <span class="tech-tag">LINUX KERNEL</span>
                         <span class="tech-tag">QEMU</span>
-                        <span class="tech-tag">Pwndbg</span>
-                        <span class="tech-tag">Syscaller</span>
-                        <span class="tech-tag">GDB</span>
+                        <span class="tech-tag">PWNDBG</span>
+                        <span class="tech-tag">SYS CALLER</span>
+                        <span class="tech-tag">GOB</span>
                     </div>
                 </div>
+                
                 <div class="card">
                     <h3>Meta Quest Surgical Sim</h3>
                     <p>Built a VR surgical trainer for Unreal Engine and Meta Quest 2 with full OpenXR integration, physics simulation, and haptic feedback research.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">Unreal Engine</span>
-                        <span class="tech-tag">Meta Quest</span>
+                        <span class="tech-tag">UNREAL ENGINE</span>
+                        <span class="tech-tag">META QUEST</span>
                         <span class="tech-tag">WebGL</span>
                         <span class="tech-tag">VR</span>
-                        <span class="tech-tag">OpenXR</span>
-                        <span class="tech-tag">Blueprint</span>
+                        <span class="tech-tag">OPENXR</span>
+                        <span class="tech-tag">BLUEPRINT</span>
                     </div>
                 </div>
+                
                 <div class="card">
-                    <h3>DEF CON CTF - Malware Reversing</h3>
+                    <h3>DEF CON CTF  Malware Reversing</h3>
                     <p>Participated in DEF CON-style capture-the-flag events, reverse engineering malware samples using IDA Pro, Ghidra, and dynamic analysis with x64dbg.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">IDA Pro</span>
-                        <span class="tech-tag">Ghidra</span>
+                        <span class="tech-tag">IDA PRO</span>
+                        <span class="tech-tag">GHIDRA</span>
                         <span class="tech-tag">x64dbg</span>
                         <span class="tech-tag">CTF</span>
-                        <span class="tech-tag">Reverse Engineering</span>
+                        <span class="tech-tag">REVERSE ENGINEERING</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
     <footer class="footer" id="contact">
         <div class="container">
-            <h3>HMU IF YOU WANT TO WORK TOGETHER</h3>
-            <p>Made with love by koala.sh</p>
+            <h3>LET'S BUILD THE FUTURE</h3>
+            <p>Ready to transcend reality? Let's create something extraordinary together.</p>
             <div class="social-links" style="margin-top: 3rem;">
-                <a href="https://discord.gg/PnwWcywFyb" target="_blank" class="social-btn" aria-label="Discord">DISCORD</a>
-                <a href="mailto:meowtechxd.lol@gmail.com" target="_blank" class="social-btn" aria-label="Email">START PROJECT</a>
-            </div>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=meowtechxd.lol@gmail.com" target="_blank" class="social-btn">START PROJECT</a>
+                
             </div>
         </div>
     </footer>
+
     <script>
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 1000);
-            }, 800);
+        const audio = document.getElementById('backgroundAudio');
+        const musicPlayer = document.createElement('div');
+        musicPlayer.className = 'music-player';
+
+        const volumeSlider = document.createElement('input');
+        volumeSlider.type = 'range';
+        volumeSlider.min = '0';
+        volumeSlider.max = '1';
+        volumeSlider.step = '0.01';
+        volumeSlider.value = audio.volume;
+        volumeSlider.id = 'custom-volume-slider';
+
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
         });
+
+        musicPlayer.appendChild(volumeSlider);
+        document.body.appendChild(musicPlayer);
+
+        let isMusicActive = false;
+
+        document.body.addEventListener('click', (event) => {
+            const excludedTags = ['A', 'BUTTON', 'SPAN', 'INPUT'];
+            const excludedClasses = ['tech-tag', 'card', 'custom-volume-slider'];
+            
+            // Check if the clicked element is a nav link
+            const isNavLink = event.target.closest('.nav-links a');
+            if (isNavLink) {
+                return; // Don't trigger music for nav links
+            }
+        
+            if (
+            !excludedTags.includes(event.target.tagName) &&
+            !excludedClasses.some(cls => event.target.classList.contains(cls))
+            ) {
+            if (!isMusicActive) {
+            fadeInAudio();
+            } else {
+            fadeOutAudio();
+            }
+            }
+        });
+
+        function fadeInAudio() {
+            audio.volume = 0;
+            audio.currentTime = 0;
+            audio.play().catch(error => console.log('Error playing audio:', error));
+            isMusicActive = true;
+            musicPlayer.style.display = 'flex';
+            musicPlayer.style.bottom = '7%';
+            setTimeout(() => {
+            musicPlayer.style.opacity = '1';
+            volumeSlider.style.opacity = '1';
+            }, 10);
+
+            let volume = 0;
+            const fadeInInterval = setInterval(() => {
+            if (volume < 1) {
+            volume += 0.05;
+            audio.volume = volume;
+            } else {
+            clearInterval(fadeInInterval);
+            }
+            }, 50);
+        }
+
+        function fadeOutAudio() {
+            let volume = audio.volume;
+            const fadeOutInterval = setInterval(() => {
+            if (volume > 0) {
+            volume -= 0.05;
+            audio.volume = volume;
+            } else {
+            clearInterval(fadeOutInterval);
+            audio.pause();
+            isMusicActive = false;
+            musicPlayer.style.opacity = '0';
+            volumeSlider.style.opacity = '0';
+            setTimeout(() => {
+            musicPlayer.style.display = 'none';
+            }, 500);
+            }
+            }, 50);
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (isMusicActive && document.visibilityState === 'visible') {
+            musicPlayer.style.display = 'flex';
+            musicPlayer.style.opacity = '1';
+            volumeSlider.style.opacity = '1';
+            }
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 1000);
+            }, 1000);
+        });
+
         const cursor = document.getElementById('cursor');
         const trailElements = [];
-        for (let i = 0; i < 12; i++) {
+        
+        for(let i = 0; i < 20; i++) {
             const trail = document.createElement('div');
             trail.className = 'cursor-trail';
-            trail.style.width = `${Math.random() * 4 + 4}px`;
-            trail.style.height = trail.style.width;
             document.body.appendChild(trail);
             trailElements.push(trail);
         }
+
         let mouseX = 0, mouseY = 0;
-        let trailX = new Array(12).fill(0), trailY = new Array(12).fill(0);
+        let trailX = [], trailY = [];
+        
+        for(let i = 0; i < 20; i++) {
+            trailX[i] = 0;
+            trailY[i] = 0;
+        }
+
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursor.style.transform = `translate(${mouseX - 8}px, ${mouseY - 8}px)`;
+            cursor.style.left = mouseX - 10 + 'px';
+            cursor.style.top = mouseY - 10 + 'px';
         });
+
         function updateTrail() {
-            for (let i = trailElements.length - 1; i > 0; i--) {
+            for(let i = trailElements.length - 1; i > 0; i--) {
                 trailX[i] = trailX[i - 1];
                 trailY[i] = trailY[i - 1];
             }
             trailX[0] = mouseX;
             trailY[0] = mouseY;
+            
             trailElements.forEach((trail, index) => {
-                trail.style.transform = `translate(${trailX[index] - parseFloat(trail.style.width) / 2}px, ${trailY[index] - parseFloat(trail.style.height) / 2}px)`;
-                trail.style.opacity = (12 - index) / 12;
+                trail.style.left = trailX[index] - 2 + 'px';
+                trail.style.top = trailY[index] - 2 + 'px';
+                trail.style.opacity = (20 - index) / 20;
             });
+            
             requestAnimationFrame(updateTrail);
         }
-        requestAnimationFrame(updateTrail);
+        updateTrail();
+
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 10; i++) {
+        for(let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
             particlesContainer.appendChild(particle);
         }
-        const canvas = document.getElementById('shooting-star-bg');
+
+        const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
-        let width, height;
-        function resizeCanvas() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const matrix = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン'@#$%&*+-=!?<>^~|/\\'abcdefghijklmnopqrstuvwxyz";
+        const matrixArray = matrix.split("");
+        
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
         }
-        resizeCanvas();
-        const stars = [];
-        for (let i = 0; i < 10; i++) {
-            stars.push({
-                x: -width * Math.random(),
-                y: Math.random() * height,
-                speed: Math.random() * 20 + 10,
-                size: Math.random() * 2 + 1
-            });
+        
+        function drawMatrix() {
+
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0';
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+
+            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
         }
-        function drawShootingStars() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, width, height);
-            stars.forEach(star => {
-                star.x += star.speed;
-                if (star.x > width) star.x = -width * Math.random();
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${1 - star.x / width})`;
-                ctx.fill();
-                const gradient = ctx.createLinearGradient(star.x, star.y, star.x - 50, star.y);
-                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
-                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                ctx.beginPath();
-                ctx.moveTo(star.x, star.y);
-                ctx.lineTo(star.x - 50, star.y);
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = star.size * 2;
-                ctx.stroke();
-            });
-            requestAnimationFrame(drawShootingStars);
-        }
-        requestAnimationFrame(drawShootingStars);
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(resizeCanvas, 100);
-        });
-        let lastScrollY = 0;
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            document.querySelector('.nav').classList.toggle('scrolled', scrollY > 50);
-            stars.forEach(star => {
-                star.y += scrollY > lastScrollY ? 0.5 : -0.5;
-                if (star.y < 0) star.y = height;
-                if (star.y > height) star.y = 0;
-            });
-            lastScrollY = scrollY;
-        });
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        document.querySelectorAll('.card').forEach(el => {
-            observer.observe(el);
-        });
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        document.addEventListener('contextmenu', event => event.preventDefault());
+    }
+
+
+    setInterval(drawMatrix, 35);
+
+    document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
